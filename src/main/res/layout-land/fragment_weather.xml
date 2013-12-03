@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!-- android:background="#c1e6ff" -->
+    <ImageView
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:id="@+id/image_weather" />
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/label_temperature"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="80dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:id="@id/label_temp_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/secondary_text_light"
+            android:gravity="center"
+            android:textSize="@dimen/font_large" />
+        <TextView
+            android:id="@id/label_temp_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/secondary_text_light"
+            android:gravity="center"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/primary_text_light"
+            android:gravity="center"
+            android:textSize="@dimen/font_large"
+            android:id="@+id/label_humidity" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/primary_text_light"
+            android:gravity="center"
+            android:textSize="@dimen/font_large"
+            android:id="@+id/label_wind" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10sp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <Button
+            android:id="@+id/button_update"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Weather"
+            android:onClick="updateWeather" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/update_progress"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>
+

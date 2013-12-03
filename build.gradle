@@ -12,10 +12,20 @@ android {
     compileSdkVersion 'android-18'
     buildToolsVersion '19.0.0'
 
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 18
+    }
+
     buildTypes {
         release {
             runProguard false
             proguardFile getDefaultProguardFile('proguard-android.txt')
         }
     }
+}
+
+dependencies {
+    compile "com.android.support:support-v4:18.0.+"
+    compile "com.android.support:appcompat-v7:18.0.+"
 }
