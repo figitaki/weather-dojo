@@ -14,12 +14,19 @@
         android:contentDescription="@string/image_description" />
 
     <TextView
+        android:id="@+id/label_condition"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="@dimen/font_large" />
+    <TextView
         android:id="@+id/label_temperature"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
-        android:textSize="80dp" />
+        android:textSize="80sp" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -32,11 +39,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:textColor="@android:color/tertiary_text_light"
+            android:textColor="@android:color/primary_text_light"
+            android:gravity="center"
+            android:textSize="@dimen/font_large"
+            android:text="H:"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/primary_text_light"
             android:gravity="center"
             android:textSize="@dimen/font_large"
             android:id="@+id/label_temp_max" />
-
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@android:color/tertiary_text_light"
+                android:gravity="center"
+                android:textSize="@dimen/font_large"
+                android:text=" / L:"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

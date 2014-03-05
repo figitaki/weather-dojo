@@ -8,11 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity
@@ -20,8 +18,9 @@ public class MainActivity extends ActionBarActivity
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private WeatherFragment mWeatherFragment;
+    private ForecastFragment mForecastFragment;
 
-    private CharSequence mTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,6 @@ public class MainActivity extends ActionBarActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
-
-        //mWeatherFragment = new WeatherFragment();
-
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -53,18 +48,28 @@ public class MainActivity extends ActionBarActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, mWeatherFragment)
                     .commit();
-        } else {
+        } else if (position==1) {
+            if (mForecastFragment == null) {
+                mForecastFragment = (ForecastFragment) ForecastFragment
+                        .instantiate(this, "com.figitaki.weatherdojo.ForecastFragment");
+            }
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .replace(R.id.container, mForecastFragment)
                     .commit();
+        } else {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                        .commit();
         }
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("Waco, Texas");
+        SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.actions, android.R.layout.simple_spinner_dropdown_item);
+        actionBar.setListNavigationCallbacks(mSpinnerAdapter, null);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        actionBar.setDisplayShowTitleEnabled(false);
     }
 
 
@@ -90,7 +95,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void updateWeather(View view) throws InterruptedException {
-        mWeatherFragment.updateWeather(view);
+        mWeatherFragment.updateWeather();
     }
 
     /**
